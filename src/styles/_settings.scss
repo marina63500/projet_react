@@ -1,0 +1,49 @@
+//fonts
+$font-1: 'Montserrat', sans-serif;
+$font-2: 'Raleway', sans-serif;
+$font-3: 'Maven Pro', sans-serif;
+
+//colors
+$color-1: #021F4E;
+$color-2: #FFC95C;
+$color-3:#F7F7F7;
+$color-4: #38369A;
+
+//bloc réutilisables
+@mixin verticalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $color-3;
+  font-family: $font-1;
+  // @include verticalCenter;
+}
+li {
+  list-style-type: none;
+}
+
+main {
+  padding: 20px;
+  margin-left: 220px; // Adjust for sidebar width
+  background-color: $color-3;
+  min-height: 100vh; // Ensure it covers full height
+}
+
+
+h1{
+  font-size: 2rem;
+  font-weight: bold;
+  color: $color-1;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
