@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 
-
-const Home = () => {
+const Famille = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/message')
+      .get('http://localhost:8000/api/dossiers')
       .then(response => {
         console.log(response.data);
         setData(response.data); // on met à jour le state ici
@@ -19,24 +18,20 @@ const Home = () => {
   }, []); // le tableau vide signifie que ça s’exécute une seule fois au montage
 
   return (
-    
     <div>
       <Sidebar />
       <main>
-      <h1>Bienvenue sur la page d'accueil</h1>
-
+      <h1>Bienvenue sur la page Famille</h1>
       <ul>
-        {data.map(message => (
-          <li key={message.id}>
-            <strong>{message.object}</strong> : {message.content} - {message.createdAt}
+        {data.map(dossier => (
+          <li key={dossier.id}>
+            <strong>{dossier.title}</strong> : {dossier.image} - {dossier.description}
           </li>
         ))}
       </ul>
       </main>
     </div>
-
-   
   );
 };
 
-export default Home;
+export default Famille;
