@@ -1,66 +1,65 @@
 import { useParams, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
-import Card from "../components/Card";
 
 function FamilleDetails() {
-  const { id } = useParams(); // récupère l'id de l'URL
-  const navigate = useNavigate(); // permet de naviguer entre les pages
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [dossier, setDossier] = useState(null);
-   
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/dossiers/${id}`)
+      .then((response) => {
+        console.log("Réponse API dossier :", response.data);
+        setDossier(response.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Erreur Axios :", err);
+        setError(err);
+        setLoading(false);
+      });
+  }, [id]);
 
- useEffect(() => {
-  axios.get(`http://localhost:8000/api/dossiers/${id}`)
-    .then((response) => setDossier(response.dossier))
-    .catch((err) => setError(err));
-}, [id]);
+  if (loading) {
+    return <p>Chargement...</p>;
+  }
 
-if (error) {
-  return <p style={{ color: "red" }}>Erreur : {error.message}</p>;
-}
-
-if (!dossier) {
-  return <p>Chargement...</p>;
-}
-
-
-
-  // if (!dossier) return <p>Chargement...</p>;
+  if (error) {
+    return (
+      <div>
+        <Sidebar />
+        <h1>Erreur</h1>
+        <p style={{ color: "red" }}>{error.message}</p>
+        <button onClick={() => navigate("/famille")} className="btn-retour">
+          ← Retour aux familles
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
       <Sidebar />
+      
+      <div className="famille-details">
       <main>
-        <div className="famille-details">
-          <h2>Détails de la famille</h2>
-         {dossier.map(dossier => (
-          <Card
-            key={dossier.id}
-            id={dossier.id}
-            image={dossier.image}
-            title={dossier.title}
-            description={dossier.description}
-          />
-         
-        ))}
-          {/* <p>Créé le: {dossier.createdAt}</p> */}
-
-          {/* <h2>{dossier.title}</h2>
-          <img src={dossier.image} alt={dossier.title} />
-          <p>{dossier.description}</p> */}
-        
-
-          <button
-          onClick={() => navigate("/famille")}
-          className="btn-retour"
-          >
+        <h1>Détails : {dossier.title}</h1>
+        <img
+          src={`http://localhost:8000/images/${dossier.image}`}
+          alt={dossier.title}
+          style={{ maxWidth: "400px", borderRadius: "8px" }}
+        />
+        <p>{dossier.description}</p>
+        <button onClick={() => navigate("/famille")} className="btn-retour">
           ← Retour aux familles
         </button>
-      </div>
       </main>
+      </div>
     </div>
   );
 }
