@@ -9,12 +9,12 @@ $color-2: #FFC95C;
 $color-3:#F7F7F7;
 $color-4: #38369A;
 
-//bloc réutilisables
-@mixin verticalCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+//bloc réutilisable
+// @mixin verticalCenter {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 * {
   padding: 0;
@@ -33,7 +33,7 @@ li {
 
 main {
   padding: 20px;
-  margin-left: 220px; // Adjust for sidebar width
+  margin-left: 250px; // Adjust for sidebar width
   background-color: $color-3;
   min-height: 100vh; // Ensure it covers full height
 }
@@ -46,4 +46,69 @@ h1{
   margin: auto;
   text-align: center;
   padding: 20px;
+}
+
+.add-user {
+  background-color: $color-2;
+  color: $color-1;
+  border: $color-4 solid 2px;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin:auto;
+
+  &:hover {
+    background-color: darken($color-2, 30%);
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; 
+}
+
+a {
+  text-decoration: none;
+  color: $color-3;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+.famille-details{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column; 
+  padding: 20px;
+}
+
+.famille-details img{
+  justify-content: center;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.btn-retour{
+  background-color: $color-2;
+  color: $color-1;
+  border: $color-4 solid 2px;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin:auto;
+
+  &:hover {
+    background-color: darken($color-2, 30%);
+  }
 }
