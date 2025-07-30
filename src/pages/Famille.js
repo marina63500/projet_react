@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
+import Card from '../components/Card';
 import axios from 'axios';
 
 const Famille = () => {
@@ -22,13 +23,28 @@ const Famille = () => {
       <Sidebar />
       <main>
       <h1>Bienvenue sur la page Famille</h1>
-      <ul>
+
+      <button className="add-user">+ parent</button>
+
+      <div className="card-container">
+        {data.map(dossier => (
+          <Card
+            key={dossier.id}
+            id={dossier.id}
+            image={dossier.image}
+            title={dossier.title}
+            description={dossier.description}
+          />
+        ))}
+      </div>
+      {/* <ul>
+        
         {data.map(dossier => (
           <li key={dossier.id}>
             <strong>{dossier.title}</strong> : {dossier.image} - {dossier.description}
           </li>
         ))}
-      </ul>
+      </ul> */}
       </main>
     </div>
   );
