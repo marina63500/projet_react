@@ -1,0 +1,44 @@
+@import '../settings';
+
+.card {
+  background-color: rgba(255, 201, 92, 0.4);  
+  border-radius: 8px;
+  border : solid 7px $color-4;
+  box-shadow: 0 2px 4px rgba(56, 54, 154, 0.8);
+  padding: 20px;
+  margin: 20px;
+  width: 200px; 
+  text-align: center;
+  
+  h2 {
+    color: $color-1;
+    margin-bottom: 15px;
+    
+  }
+
+  p {
+    color: $color-4;
+    line-height: 1.5;
+  }
+
+  img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    background-color: $color-4;
+    color: $color-3;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color-1, 10%);
+    }
+  }
+}
+
