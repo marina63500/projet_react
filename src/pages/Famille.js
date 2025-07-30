@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Card from '../components/Card';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Famille = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -24,7 +26,10 @@ const Famille = () => {
       <main>
       <h1>Bienvenue sur la page Famille</h1>
 
-      <button className="add-user">+ parent</button>
+      {/* <button className="add-user">+ parent</button> */}
+       <button onClick={() => navigate("/user")} className="add-user">
+          + parent
+        </button>
 
       <div className="card-container">
         {data.map(dossier => (
@@ -37,14 +42,7 @@ const Famille = () => {
           />
         ))}
       </div>
-      {/* <ul>
-        
-        {data.map(dossier => (
-          <li key={dossier.id}>
-            <strong>{dossier.title}</strong> : {dossier.image} - {dossier.description}
-          </li>
-        ))}
-      </ul> */}
+     
       </main>
     </div>
   );

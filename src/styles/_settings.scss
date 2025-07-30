@@ -48,6 +48,14 @@ h1{
   padding: 20px;
 }
 
+//img page home
+.portrait-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px auto;
+  display: block;
+}
 .add-user {
   background-color: $color-2;
   color: $color-1;
@@ -110,5 +118,37 @@ a {
 
   &:hover {
     background-color: darken($color-2, 30%);
+  }
+}
+
+//css page messagerie
+.send-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f6f6ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+
+  input, textarea, select {
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  button {
+    background-color: #3e3e99;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #2e2e80;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/components/_sidebar.scss";
 import { Link } from "react-router-dom";
-import { FaHome, FaUsers, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaUsers, FaEnvelope ,FaUserCircle} from "react-icons/fa";
 
 function Sidebar() {
   return (
@@ -23,6 +23,12 @@ function Sidebar() {
           <Link to="/messagerie">
             <FaEnvelope className="icon" />
             <span>Messagerie</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/user">
+            <FaUserCircle className="icon" />
+            <span>Utilisateurs</span>
           </Link>
         </li>
       </ul>

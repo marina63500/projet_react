@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import Sidebar from "../components/Sidebar";
 import axios from "axios";
-import "./Messagerie.scss";
+
+
 
 function Messagerie() {
   const [messages, setMessages] = useState([]);
@@ -53,6 +55,12 @@ function Messagerie() {
   };
 
   return (
+    <div>
+      <div className="sidebar">
+      <Sidebar />
+      </div>
+        <main>
+
     <div className="messages-container">
       <div className="header">
         <button className="logout-button">
@@ -101,6 +109,8 @@ function Messagerie() {
           </div>
         ))}
       </div>
+    </div>
+    </main>
     </div>
   );
 }
